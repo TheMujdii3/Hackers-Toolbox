@@ -6,15 +6,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_cyberchef"
-            android:icon="@android:drawable/btn_star_big_on"
-            android:title="Cyberchef" />
+            android:icon="@mipmap/cyberchef"
+            android:title="@string/cyberchef" />
         <item
             android:id="@+id/nav_aperisolve"
-            android:icon="@android:drawable/ic_menu_compass"
-            android:title="Aperisolve" />
+            android:icon="@mipmap/aperi"
+            android:title="@string/aperisolve" />
         <item
             android:id="@+id/nav_dcode"
-            android:icon="?attr/actionModeCutDrawable"
-            android:title="Dcode" />
+            android:icon="@mipmap/dcode"
+            android:title="@string/dcode" />
     </group>
 </menu>
