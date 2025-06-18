@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
          */
 
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         //deci pe aici trebuie sa fac 3 optiuni pentru cyberchef aperisolve and dcode
