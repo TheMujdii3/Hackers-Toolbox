@@ -16,5 +16,9 @@
             android:id="@+id/nav_dcode"
             android:icon="@mipmap/dcode"
             android:title="@string/dcode" />
+        <item
+            android:id="@+id/nav_writeups"
+            android:icon="@mipmap/dcode"
+            android:title="Writeups" />
     </group>
 </menu>

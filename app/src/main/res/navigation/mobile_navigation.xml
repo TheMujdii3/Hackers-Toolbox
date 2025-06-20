@@ -28,4 +28,17 @@
         android:name="com.example.hackerstoolbox.ui.dcode.dcodeFragment"
         android:label="Dcode"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_writeups"
+        android:name="com.example.hackerstoolbox.ui.writeup_showpage.writeup_showpageFragment"
+        android:label="Writeups"
+        tools:layout="@layout/writeups_layout" />
+
+    <fragment
+        android:id="@+id/writeupDetailFragment"
+        android:name="com.example.hackerstoolbox.ui.writeupDetail.WriteupDetailFragment"
+        android:label="fragment_writeup_detail"
+        tools:layout="@layout/fragment_writeup_detail" />
+
+
 </navigation>

@@ -38,5 +38,10 @@
         app:srcCompat="@drawable/ic_menu_camera"
         tools:ignore="TouchTargetSizeCheck"
         tools:visibility="invisible" />
+    <FrameLayout
+        android:id="@+id/fragment_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

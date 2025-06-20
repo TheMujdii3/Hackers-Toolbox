@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "915690064083",
+    "project_id": "hacker-s-toolbox",
+    "storage_bucket": "hacker-s-toolbox.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:915690064083:android:2f5b853a8b4e09a2026c26",
+        "android_client_info": {
+          "package_name": "com.example.hackerstoolbox"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtG5Jqp8mD411RKJoZf26U6HW2LY68x28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
