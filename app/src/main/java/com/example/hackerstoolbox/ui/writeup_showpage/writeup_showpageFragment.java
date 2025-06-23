@@ -77,6 +77,8 @@ public class writeup_showpageFragment extends Fragment {
                     Navigation.findNavController(view).navigate(R.id.writeupDetailFragment, bundle);
                 });
 
+
+
                 binding.recycler.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 binding.recycler.requestLayout();
