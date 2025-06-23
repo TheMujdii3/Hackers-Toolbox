@@ -37,7 +37,7 @@
     <fragment
         android:id="@+id/writeupDetailFragment"
         android:name="com.example.hackerstoolbox.ui.writeupDetail.WriteupDetailFragment"
-        android:label="fragment_writeup_detail"
+        android:label="View Writeup"
         tools:layout="@layout/fragment_writeup_detail" />
 
 

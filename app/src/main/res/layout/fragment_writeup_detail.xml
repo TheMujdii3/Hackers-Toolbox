@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="#000000">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        android:id="@+id/scrollContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:background="#000000">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/markdownText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-    </ScrollView>
+            android:layout_width="wrap_content"
+            android:layout_height="467dp"
+            android:lineSpacingExtra="4dp"
+            android:paddingTop="80dp"
+            android:textColor="@android:color/white"
+            android:textIsSelectable="true"
+            android:textSize="16sp"
+            android:visibility="visible"
+            tools:text="## Writeup Title\n\nWelcome to the walkthrough of this amazing challenge.\n\n`code blocks` and other markdown will appear here!"
+            tools:visibility="visible" />
 
+    </LinearLayout>
 </ScrollView>

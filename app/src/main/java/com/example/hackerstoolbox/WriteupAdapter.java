@@ -1,6 +1,7 @@
 package com.example.hackerstoolbox;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,9 +34,8 @@ public class WriteupAdapter extends RecyclerView.Adapter<WriteupAdapter.ViewHold
             title = itemView.findViewById(R.id.writeupTitle);
             tags = itemView.findViewById(R.id.writeupTags);
             itemView.setOnClickListener(v -> {
-                listener.onItemClick(v, writeups.get(getAdapterPosition())); // pass view
+                listener.onItemClick(v, writeups.get(getAdapterPosition()));
             });
-
         }
     }
 
@@ -48,8 +48,9 @@ public class WriteupAdapter extends RecyclerView.Adapter<WriteupAdapter.ViewHold
     @Override
     public void onBindViewHolder(WriteupAdapter.ViewHolder holder, int position) {
         Writeup w = writeups.get(position);
-        holder.title.setText(w.title);
-        holder.tags.setText(w.tags);
+        Log.d("ADAPTER", "Binding: " + w.title);
+        holder.title.setText(w.title != null ? w.title : "No title");
+        holder.tags.setText(w.tags != null ? w.tags : "No tags");
     }
 
     @Override

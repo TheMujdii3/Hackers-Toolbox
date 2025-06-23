@@ -1,6 +1,5 @@
 package com.example.hackerstoolbox.ui.writeup_showpage;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,9 +17,8 @@ import com.example.hackerstoolbox.Writeup;
 import com.example.hackerstoolbox.WriteupAdapter;
 import com.example.hackerstoolbox.WriteupService;
 import com.example.hackerstoolbox.databinding.WriteupsLayoutBinding;
-import com.example.hackerstoolbox.ui.writeupDetail.WriteupDetailFragment;
-import com.google.api.LogDescriptor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -33,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class writeup_showpageFragment extends Fragment {
 
     private WriteupsLayoutBinding binding;
-    private Retrofit retrofit; // Fixed variable name (was 'aretrofit')
+    private Retrofit retrofit;
     private WriteupService service;
 
     @Override
@@ -41,8 +38,10 @@ public class writeup_showpageFragment extends Fragment {
         binding = WriteupsLayoutBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        // Use requireContext() for non-null context
         binding.recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
+
+        // Set empty adapter initially
+        binding.recycler.setAdapter(new WriteupAdapter(requireContext(), new ArrayList<>(), (v, w) -> {}));
 
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://th3mujd11.synology.me/")
@@ -60,32 +59,33 @@ public class writeup_showpageFragment extends Fragment {
         service.getAllWriteups().enqueue(new Callback<List<Writeup>>() {
             @Override
             public void onResponse(@NonNull Call<List<Writeup>> call, @NonNull Response<List<Writeup>> response) {
-                if (!isAdded()) return; // Check fragment attachment
+                if (!isAdded()) return;
 
                 if (!response.isSuccessful() || response.body() == null) {
-                    //Toast.makeText(requireContext(), "Empty or bad response", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(requireContext(),response.message().toString(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), "Empty or bad response", Toast.LENGTH_SHORT).show();
                     return;
+                }
+
+                for (Writeup da : response.body()) {
+                    Log.d("DEBUG response api", "Response received: " + da.content);
                 }
 
                 WriteupAdapter adapter = new WriteupAdapter(requireContext(), response.body(), (view, writeup) -> {
                     Bundle bundle = new Bundle();
-                    //bundle.putString("writeupId", String.valueOf(writeup.getId()));
-                    //bundle.putSerializable("writeup", writeup);
-                    bundle.putString("content",writeup.content);
-                    Log.d("DEBUG  in pana mea","Writeup content: " + writeup.getContent() );
+                    bundle.putString("content", writeup.content);
+                    Log.d("DEBUG", "Writeup clicked: " + writeup.title);
                     Navigation.findNavController(view).navigate(R.id.writeupDetailFragment, bundle);
-
-
                 });
-                //muta in plm md u vietii
 
                 binding.recycler.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                binding.recycler.requestLayout();
+                Log.d("DEBUG", "Adapter set item count: " + adapter.getItemCount());
             }
 
             @Override
             public void onFailure(@NonNull Call<List<Writeup>> call, @NonNull Throwable t) {
-                if (isAdded()) { // Check fragment attachment
+                if (isAdded()) {
                     Toast.makeText(requireContext(), "Failed to load writeups", Toast.LENGTH_SHORT).show();
                 }
             }
