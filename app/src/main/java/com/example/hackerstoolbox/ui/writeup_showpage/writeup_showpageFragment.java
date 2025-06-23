@@ -1,6 +1,8 @@
 package com.example.hackerstoolbox.ui.writeup_showpage;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,8 @@ import com.example.hackerstoolbox.Writeup;
 import com.example.hackerstoolbox.WriteupAdapter;
 import com.example.hackerstoolbox.WriteupService;
 import com.example.hackerstoolbox.databinding.WriteupsLayoutBinding;
+import com.example.hackerstoolbox.ui.writeupDetail.WriteupDetailFragment;
+import com.google.api.LogDescriptor;
 
 import java.util.List;
 
@@ -59,19 +63,22 @@ public class writeup_showpageFragment extends Fragment {
                 if (!isAdded()) return; // Check fragment attachment
 
                 if (!response.isSuccessful() || response.body() == null) {
-                    Toast.makeText(requireContext(), "Empty or bad response", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(requireContext(), "Empty or bad response", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(),response.message().toString(),Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 WriteupAdapter adapter = new WriteupAdapter(requireContext(), response.body(), (view, writeup) -> {
                     Bundle bundle = new Bundle();
-
                     //bundle.putString("writeupId", String.valueOf(writeup.getId()));
                     //bundle.putSerializable("writeup", writeup);
-                    bundle.putString("content",writeup.getContent());
+                    bundle.putString("content",writeup.content);
+                    Log.d("DEBUG  in pana mea","Writeup content: " + writeup.getContent() );
                     Navigation.findNavController(view).navigate(R.id.writeupDetailFragment, bundle);
-                });
 
+
+                });
+                //muta in plm md u vietii
 
                 binding.recycler.setAdapter(adapter);
             }
