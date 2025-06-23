@@ -19,7 +19,7 @@ public class CyberchefFragment extends Fragment {
 
     private WebshellCyberchefBinding binding;
 
-    public View onCreateView( LayoutInflater inflater,
+    public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         CyberchefViewModel galleryViewModel =
                 new ViewModelProvider(this).get(CyberchefViewModel.class);
