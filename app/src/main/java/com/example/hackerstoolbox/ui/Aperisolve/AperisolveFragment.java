@@ -26,8 +26,6 @@ public class AperisolveFragment extends Fragment {
 
     private WebshellCyberchefBinding binding;
     private WebView webView;
-
-
     private ValueCallback<Uri[]> filePathCallback;
     private ActivityResultLauncher<Intent> fileChooserLauncher;
 
